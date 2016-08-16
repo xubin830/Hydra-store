@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>Hydra</artifactId>
+        <groupId>vip.xubin</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../hydra-store-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>Hydra-manage</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>Hydra-manage-pojo</module>
+        <module>Hydra-manage-mapper</module>
+        <module>Hydra-manage-service</module>
+        <module>Hydra-manage-web</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>vip.xubin</groupId>
+            <artifactId>Hydra-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>80</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

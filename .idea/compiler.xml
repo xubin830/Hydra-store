@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="1500" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="Hydar-manage-pojo" />
+        <module name="hydra-common" />
+        <module name="Hydra-manage-mapper" />
+        <module name="Hydra-manage-pojo" />
+        <module name="Hydra-manage-service" />
+        <module name="Hydra-manage-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Hydar-manage" target="1.7" />
+      <module name="Hydar-manage-pojo" target="1.7" />
+      <module name="hydra-common" target="1.7" />
+      <module name="Hydra-manage" target="1.7" />
+      <module name="Hydra-manage-mapper" target="1.7" />
+      <module name="Hydra-manage-pojo" target="1.7" />
+      <module name="Hydra-manage-service" target="1.7" />
+      <module name="Hydra-manage-web" target="1.7" />
+      <module name="hydra-store-parent" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

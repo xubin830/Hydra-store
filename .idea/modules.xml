@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-mapper/Hydra-manage-mapper.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage-mapper/Hydra-manage-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-pojo/Hydra-manage-pojo.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage-pojo/Hydra-manage-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-service/Hydra-manage-service.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage-service/Hydra-manage-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-web/Hydra-manage-web.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage-web/Hydra-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hydra-common/hydra-common.iml" filepath="$PROJECT_DIR$/hydra-common/hydra-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hydra-store-parent/hydra-store-common.iml" filepath="$PROJECT_DIR$/hydra-store-parent/hydra-store-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hydra-store-parent/hydra-store-parent.iml" filepath="$PROJECT_DIR$/hydra-store-parent/hydra-store-parent.iml" />
+    </modules>
+  </component>
+</project>
