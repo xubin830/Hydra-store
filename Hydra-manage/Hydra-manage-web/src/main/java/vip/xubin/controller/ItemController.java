@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import vip.xubin.common.pojo.EUIDataGridResult;
 import vip.xubin.pojo.TbItem;
 import vip.xubin.service.ItemService;
 
@@ -24,6 +25,12 @@ public class ItemController {
     public TbItem getItemById(@PathVariable Long itemId){
         TbItem item = itemservice.getItemById(itemId);
         return item;
+    }
+
+    @RequestMapping("/item/list")
+    @ResponseBody
+    public EUIDataGridResult getItemList(Integer page,Integer rows){
+        return itemservice.getItemList(page, rows);
     }
 
 }

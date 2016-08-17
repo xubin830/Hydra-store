@@ -1,7 +1,10 @@
 package vip.xubin.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vip.xubin.common.pojo.EUIDataGridResult;
 import vip.xubin.mapper.TbItemMapper;
 import vip.xubin.pojo.TbItem;
 import vip.xubin.pojo.TbItemExample;
@@ -35,5 +38,23 @@ public class ItemServiceImpl implements ItemService {
         }
             return null;
 
+    }
+
+    @Override
+    public EUIDataGridResult getItemList(Integer page, Integer rows) {
+
+        TbItemExample example = new TbItemExample();
+
+        PageHelper.startPage(page,rows);
+
+        List<TbItem> items = itemMapper.selectByExample(example);
+
+        PageInfo<TbItem> pageInfo = new PageInfo<>(items);
+
+        EUIDataGridResult gridResult = new EUIDataGridResult();
+        gridResult.setRows(items);
+        gridResult.setTotal((int) pageInfo.getTotal());
+
+        return gridResult;
     }
 }
