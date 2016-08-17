@@ -12,7 +12,6 @@
     <artifactId>Hydra-manage-mapper</artifactId>
 
     <!-- 依赖管理 -->
-
     <dependencies>
         <dependency>
             <groupId>vip.xubin</groupId>
@@ -36,10 +35,10 @@
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
         </dependency>
-        <!-- Oracle -->
+        <!-- Mysql -->
         <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!-- 连接池 -->
         <dependency>
