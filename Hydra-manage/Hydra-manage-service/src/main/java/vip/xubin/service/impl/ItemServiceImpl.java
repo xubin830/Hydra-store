@@ -5,11 +5,14 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vip.xubin.common.pojo.EUIDataGridResult;
+import vip.xubin.common.utils.HydraResult;
+import vip.xubin.common.utils.IDUtils;
 import vip.xubin.mapper.TbItemMapper;
 import vip.xubin.pojo.TbItem;
 import vip.xubin.pojo.TbItemExample;
 import vip.xubin.service.ItemService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,5 +59,22 @@ public class ItemServiceImpl implements ItemService {
         gridResult.setTotal((int) pageInfo.getTotal());
 
         return gridResult;
+    }
+
+    @Override
+    public HydraResult createItem(TbItem item) {
+        Long itemId = IDUtils.genItemId();
+
+        item.setId(itemId);
+
+        item.setStatus((byte) 1);
+
+        item.setCreated(new Date());
+        item.setUpdated(new Date());
+
+        itemMapper.insert(item);
+
+        return HydraResult.ok();
+
     }
 }
