@@ -37,7 +37,8 @@ public class ItemController {
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     @ResponseBody
-    public HydraResult createItem(TbItem item){
-        return itemservice.createItem(item);
+    public HydraResult createItem(TbItem item,String desc,String itemParams) throws Exception {
+        return itemservice.createItem(item,desc,itemParams);
     }
+
 }

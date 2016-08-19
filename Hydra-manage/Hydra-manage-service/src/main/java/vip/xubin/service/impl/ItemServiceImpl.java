@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 import vip.xubin.common.pojo.EUIDataGridResult;
 import vip.xubin.common.utils.HydraResult;
 import vip.xubin.common.utils.IDUtils;
+import vip.xubin.mapper.TbItemDescMapper;
 import vip.xubin.mapper.TbItemMapper;
+import vip.xubin.mapper.TbItemParamItemMapper;
 import vip.xubin.pojo.TbItem;
+import vip.xubin.pojo.TbItemDesc;
 import vip.xubin.pojo.TbItemExample;
+import vip.xubin.pojo.TbItemParamItem;
 import vip.xubin.service.ItemService;
 
 import java.util.Date;
@@ -23,6 +27,12 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     @Autowired
     private TbItemMapper itemMapper;
+
+    @Autowired
+    private TbItemDescMapper itemDescMapper;
+
+    @Autowired
+    private TbItemParamItemMapper itemParamItemMapper;
 
     @Override
     public TbItem getItemById(Long itemId) {
@@ -61,8 +71,9 @@ public class ItemServiceImpl implements ItemService {
         return gridResult;
     }
 
+
     @Override
-    public HydraResult createItem(TbItem item) {
+    public HydraResult createItem(TbItem item, String desc,String itemParams) throws Exception {
         Long itemId = IDUtils.genItemId();
 
         item.setId(itemId);
@@ -74,7 +85,55 @@ public class ItemServiceImpl implements ItemService {
 
         itemMapper.insert(item);
 
+        HydraResult result = insertItemDesc(item.getId(), desc);
+
+        if (result.getStatus() != 200) throw new Exception();
+
+        result = insertItemParamItem(itemId, itemParams);
+
+        if (result.getStatus() != 200) throw new Exception();
+
+        return HydraResult.ok();
+    }
+
+    /**
+     *  保存商品描述
+     * @param id 商品id
+     * @param desc 商品描述
+     * @return  ok
+     */
+    public HydraResult insertItemDesc(Long id, String desc) {
+
+        TbItemDesc itemDesc = new TbItemDesc();
+        itemDesc.setItemId(id);
+        itemDesc.setItemDesc(desc);
+        itemDesc.setCreated(new Date());
+        itemDesc.setUpdated(new Date());
+
+        itemDescMapper.insert(itemDesc);
+
+        return HydraResult.ok();
+    }
+
+    /**
+     *  保存商品规格参数
+     *
+     * @param cid  商品id
+     * @param itemParams 商品规格描述
+     * @return
+     */
+    public HydraResult insertItemParamItem(Long cid, String itemParams) {
+
+        TbItemParamItem itemParamItem = new TbItemParamItem();
+        itemParamItem.setItemId(cid);
+        itemParamItem.setCreated(new Date());
+        itemParamItem.setUpdated(new Date());
+        itemParamItem.setParamData(itemParams);
+
+        itemParamItemMapper.insert(itemParamItem);
+
         return HydraResult.ok();
 
     }
+
 }

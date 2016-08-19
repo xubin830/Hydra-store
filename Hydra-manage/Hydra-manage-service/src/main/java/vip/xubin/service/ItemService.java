@@ -13,5 +13,5 @@ public interface ItemService {
 
     EUIDataGridResult getItemList(Integer page,Integer rows);
 
-    HydraResult createItem(TbItem item);
+    HydraResult createItem(TbItem item, String desc,String itemParams) throws Exception;
 }
