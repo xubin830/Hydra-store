@@ -24,11 +24,11 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Hydar-manage-pojo" />
-        <module name="hydra-common" />
         <module name="Hydra-manage-mapper" />
         <module name="Hydra-manage-pojo" />
         <module name="Hydra-manage-service" />
         <module name="Hydra-manage-web" />
+        <module name="hydra-portal" />
         <module name="hydra-rest" />
       </profile>
     </annotationProcessing>
@@ -41,6 +41,7 @@
       <module name="Hydra-manage-pojo" target="1.7" />
       <module name="Hydra-manage-service" target="1.7" />
       <module name="Hydra-manage-web" target="1.7" />
+      <module name="hydra-portal" target="1.7" />
       <module name="hydra-rest" target="1.7" />
       <module name="hydra-store-parent" target="1.7" />
     </bytecodeTargetLevel>

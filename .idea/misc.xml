@@ -43,6 +43,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-web" />
+    <file type="web" url="file://$PROJECT_DIR$/hydra-portal" />
     <file type="web" url="file://$PROJECT_DIR$/hydra-rest" />
   </component>
   <component name="MavenProjectsManager">
