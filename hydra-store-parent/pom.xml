@@ -10,6 +10,7 @@
     <modules>
         <module>../hydra-common</module>
         <module>../Hydra-manage</module>
+        <module>../hydra-rest</module>
     </modules>
     <packaging>pom</packaging>
 

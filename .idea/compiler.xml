@@ -29,6 +29,7 @@
         <module name="Hydra-manage-pojo" />
         <module name="Hydra-manage-service" />
         <module name="Hydra-manage-web" />
+        <module name="hydra-rest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -40,6 +41,7 @@
       <module name="Hydra-manage-pojo" target="1.7" />
       <module name="Hydra-manage-service" target="1.7" />
       <module name="Hydra-manage-web" target="1.7" />
+      <module name="hydra-rest" target="1.7" />
       <module name="hydra-store-parent" target="1.7" />
     </bytecodeTargetLevel>
   </component>
