@@ -18,7 +18,7 @@ import java.util.List;
  * @creater 2016-08-18 8:57
  */
 @Service
-public class ItemCatServiceImpl implements ItemCatService{
+public class ItemCatServiceImpl implements ItemCatService {
 
     @Autowired
     private TbItemCatMapper itemCatMapper;
@@ -38,9 +38,13 @@ public class ItemCatServiceImpl implements ItemCatService{
 
         for (TbItemCat itemCat : itemCats) {
             EUITreeNode treeNode = new EUITreeNode();
+
             treeNode.setId(itemCat.getId());
+
             treeNode.setText(itemCat.getName());
-            treeNode.setState(itemCat.getIsParent()?"closed":"open");
+
+            treeNode.setState(itemCat.getIsParent() ? "closed" : "open");
+
             treeNodes.add(treeNode);
         }
 
