@@ -20,6 +20,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String showIndex(Model model) {
+
         model.addAttribute("ad1", adService.getBigAd());
 
         return "index";

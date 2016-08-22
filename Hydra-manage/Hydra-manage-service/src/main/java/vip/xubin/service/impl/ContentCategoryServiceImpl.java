@@ -3,9 +3,11 @@ package vip.xubin.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import vip.xubin.common.pojo.EUIDataGridResult;
 import vip.xubin.common.pojo.EUITreeNode;
+import vip.xubin.common.utils.HttpClientUtil;
 import vip.xubin.common.utils.HydraResult;
 import vip.xubin.mapper.TbContentCategoryMapper;
 import vip.xubin.mapper.TbContentMapper;
@@ -33,6 +35,12 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 
     @Autowired
     private TbContentMapper contentMapper;
+
+    @Value("${REST_BASE_URL}")
+    private String REST_BASE_URL;
+
+    @Value("${REST_BIGAD_SYNC}")
+    private String REST_BIGAD_SYNC;
 
     @Override
     public List<EUITreeNode> getCategoryList(long parentId) {
@@ -153,6 +161,13 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         content.setUpdated(new Date());
 
         contentMapper.insert(content);
+
+        try {
+            HttpClientUtil.doPost(REST_BASE_URL + REST_BIGAD_SYNC);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return HydraResult.ok();
 

@@ -1,13 +1,17 @@
 package vip.xubin.rest.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import vip.xubin.common.utils.JsonUtils;
 import vip.xubin.mapper.TbItemCatMapper;
 import vip.xubin.pojo.TbItemCat;
 import vip.xubin.pojo.TbItemCatExample;
 import vip.xubin.rest.pojo.CatNode;
 import vip.xubin.rest.pojo.CatResult;
 import vip.xubin.rest.service.ItemCatService;
+import vip.xubin.rest.service.JedisClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +26,36 @@ public class ItemCatServiceImpl implements ItemCatService {
     @Autowired
     private TbItemCatMapper itemCatMapper;
 
+    @Autowired
+    private JedisClient jedisClient;
+
+    @Value("${INDEX_ITEM_CAT}")
+    private String INDEX_ITEM_CAT;
+    @Value("${INDEX_ITEM_CAT_ID}")
+    private String INDEX_ITEM_CAT_ID;
+
     @Override
     public CatResult getItemCatList() {
 
         CatResult result = new CatResult();
 
+        try {
+            String hget = jedisClient.hget(INDEX_ITEM_CAT, INDEX_ITEM_CAT_ID);
+
+            if (!StringUtils.isBlank(hget)){
+                return JsonUtils.jsonToPojo(hget, CatResult.class);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
         result.setData(getCatList(0l));
+
+        try {
+            jedisClient.hset(INDEX_ITEM_CAT, INDEX_ITEM_CAT_ID, JsonUtils.objectToJson(result));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return result;
     }

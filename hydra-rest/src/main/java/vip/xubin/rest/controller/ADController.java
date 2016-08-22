@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import vip.xubin.common.utils.HydraResult;
 import vip.xubin.rest.service.ADService;
+import vip.xubin.rest.service.RedisService;
 
 import java.util.List;
 
@@ -20,6 +22,9 @@ public class ADController {
     @Autowired
     private ADService adService;
 
+    @Autowired
+    private RedisService redisService;
+
     @RequestMapping("/getAD/Big")
     @ResponseBody
     public List getBigAd  (){
@@ -28,5 +33,12 @@ public class ADController {
 
     }
 
+    @RequestMapping("/sync/Index/BigAD")
+    @ResponseBody
+    public HydraResult syncIndexBigAD() {
+
+        return redisService.syncIndexBigAd();
+
+    }
 
 }

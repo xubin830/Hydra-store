@@ -21,8 +21,8 @@ public class AdServiceImpl implements AdService {
 
     @Override
     public String getBigAd() {
-        //return HttpClientUtil.doPost(REST_BASE_URL + REST_INDEX_AD_URL);
-        //// TODO: 2016/8/22 url没解决
-        return HttpClientUtil.doPost("http://localhost:81/rest/getAD/Big");
+
+        return HttpClientUtil.doPost(REST_BASE_URL + REST_INDEX_AD_URL);
+        //return HttpClientUtil.doPost("http://localhost:81/rest/getAD/Big");
     }
 }

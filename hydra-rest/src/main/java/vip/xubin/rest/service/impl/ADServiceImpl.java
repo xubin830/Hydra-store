@@ -1,11 +1,15 @@
 package vip.xubin.rest.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import vip.xubin.common.utils.JsonUtils;
 import vip.xubin.mapper.TbContentMapper;
 import vip.xubin.pojo.TbContent;
 import vip.xubin.pojo.TbContentExample;
 import vip.xubin.rest.service.ADService;
+import vip.xubin.rest.service.JedisClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,9 +26,31 @@ public class ADServiceImpl implements ADService {
     @Autowired
     private TbContentMapper contentMapper;
 
+    @Autowired
+    private JedisClient jedisClient;
+
+    @Value("${INDEX_AD_BIG}")
+    private String INDEX_AD_BIG;
+
+    @Value("${INDEX_AD_BIG_ID}")
+    private String INDEX_AD_BIG_ID;
+
 
     @Override
     public List getBigAd() {
+
+        try {
+            String hget = jedisClient.hget(INDEX_AD_BIG, INDEX_AD_BIG_ID);
+
+            if (!StringUtils.isBlank(hget)) {
+                List list = JsonUtils.jsonToPojo(hget, List.class);
+
+                return list;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         TbContentExample example = new TbContentExample();
 
@@ -47,6 +73,14 @@ public class ADServiceImpl implements ADService {
 
             lists.add(map);
 
+        }
+
+        try {
+
+            jedisClient.hset(INDEX_AD_BIG, INDEX_AD_BIG_ID,JsonUtils.objectToJson(lists));
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return lists;
