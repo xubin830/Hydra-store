@@ -12,6 +12,7 @@
         <module>../Hydra-manage</module>
         <module>../hydra-rest</module>
         <module>../hydra-portal</module>
+        <module>../hydra-search</module>
     </modules>
     <packaging>pom</packaging>
 

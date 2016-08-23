@@ -45,11 +45,13 @@
     <file type="web" url="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-web" />
     <file type="web" url="file://$PROJECT_DIR$/hydra-portal" />
     <file type="web" url="file://$PROJECT_DIR$/hydra-rest" />
+    <file type="web" url="file://$PROJECT_DIR$/hydra-search" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/hydra-store-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/hydra-search/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
