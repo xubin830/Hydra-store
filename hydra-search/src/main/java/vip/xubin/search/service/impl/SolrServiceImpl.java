@@ -85,6 +85,8 @@ public class SolrServiceImpl implements SolrService {
 
         query.setHighlight(true);
 
+        query.addHighlightField("item_title");
+
         query.setHighlightSimplePre("<em style=\"color:red\">");
 
         query.setHighlightSimplePost("</em>");

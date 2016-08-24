@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vip.xubin.common.utils.HydraResult;
-import vip.xubin.common.utils.JsonUtils;
 import vip.xubin.search.pojo.SearchResult;
 import vip.xubin.search.service.SolrService;
 
@@ -35,9 +34,13 @@ public class SolrController {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
     @ResponseBody
-    public String search(@RequestParam("q") String queryString,
+    public HydraResult search(@RequestParam("q") String queryString,
                            @RequestParam(defaultValue = "1") Integer page,
                            @RequestParam(defaultValue = "60") Integer rows) {
+
+        if (queryString == null) {
+            return HydraResult.build(400, "查询条件不能为空");
+        }
 
         SearchResult search = null;
         try {
@@ -49,7 +52,7 @@ public class SolrController {
             e.printStackTrace();
         }
 
-        return JsonUtils.objectToJson(search);
+        return HydraResult.ok(search);
 
 
     }
