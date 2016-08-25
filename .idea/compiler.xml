@@ -32,6 +32,7 @@
         <module name="hydra-portal" />
         <module name="hydra-rest" />
         <module name="hydra-search" />
+        <module name="hydra-sso" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -46,6 +47,7 @@
       <module name="hydra-portal" target="1.7" />
       <module name="hydra-rest" target="1.7" />
       <module name="hydra-search" target="1.7" />
+      <module name="hydra-sso" target="1.7" />
       <module name="hydra-store-parent" target="1.7" />
     </bytecodeTargetLevel>
   </component>

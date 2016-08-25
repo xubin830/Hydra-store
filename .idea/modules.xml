@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/hydra-portal/hydra-portal.iml" filepath="$PROJECT_DIR$/hydra-portal/hydra-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-rest/hydra-rest.iml" filepath="$PROJECT_DIR$/hydra-rest/hydra-rest.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-search/hydra-search.iml" filepath="$PROJECT_DIR$/hydra-search/hydra-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hydra-sso/hydra-sso.iml" filepath="$PROJECT_DIR$/hydra-sso/hydra-sso.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-store-parent/hydra-store-common.iml" filepath="$PROJECT_DIR$/hydra-store-parent/hydra-store-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-store-parent/hydra-store-parent.iml" filepath="$PROJECT_DIR$/hydra-store-parent/hydra-store-parent.iml" />
     </modules>

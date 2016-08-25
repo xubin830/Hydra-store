@@ -46,6 +46,7 @@
     <file type="web" url="file://$PROJECT_DIR$/hydra-portal" />
     <file type="web" url="file://$PROJECT_DIR$/hydra-rest" />
     <file type="web" url="file://$PROJECT_DIR$/hydra-search" />
+    <file type="web" url="file://$PROJECT_DIR$/hydra-sso" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hydra-sso:war">
+    <output-path>$PROJECT_DIR$/hydra-sso/target</output-path>
+    <root id="archive" name="hydra-sso.war">
+      <element id="artifact" artifact-name="hydra-sso:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,12 +1,16 @@
 package vip.xubin.rest.service.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import vip.xubin.common.utils.JsonUtils;
 import vip.xubin.mapper.TbItemDescMapper;
 import vip.xubin.mapper.TbItemMapper;
 import vip.xubin.mapper.TbItemParamItemMapper;
 import vip.xubin.pojo.*;
 import vip.xubin.rest.service.ItemService;
+import vip.xubin.rest.service.JedisClient;
 
 import java.util.List;
 
@@ -27,8 +31,33 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private TbItemParamItemMapper itemParamItemMapper;
 
+    @Autowired
+    private JedisClient jedisClient;
+
+    @Value("${ITEM}")
+    private String ITEM;
+    @Value("${ITEM_DESC}")
+    private String ITEM_DESC;
+    @Value("${ITEM_PARAM_ITEM}")
+    private String ITEM_PARAM_ITEM;
+    @Value("${REDIS_EXPIRE_TIME}")
+    private Integer REDIS_EXPIRE_TIME;
+
+
     @Override
     public TbItem getItemById(long itemId) {
+
+        try {
+            String hget = jedisClient.get(ITEM + ":" + itemId);
+
+            if (!StringUtils.isBlank(hget)) {
+
+                return JsonUtils.jsonToPojo(hget, TbItem.class);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         TbItemExample example = new TbItemExample();
 
@@ -40,7 +69,19 @@ public class ItemServiceImpl implements ItemService {
 
         if (items != null && items.size() > 0) {
 
-            return items.get(0);
+            TbItem tbItem = items.get(0);
+
+            try {
+                String key = ITEM + ":" + itemId;
+
+                jedisClient.set(key, JsonUtils.objectToJson(tbItem));
+
+                jedisClient.expire(key, REDIS_EXPIRE_TIME);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return tbItem;
         } else {
 
             return null;
@@ -50,6 +91,18 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public TbItemDesc getItemDescById(long itemId) {
+
+        try {
+            String hget = jedisClient.get(ITEM_DESC + ":" + itemId);
+
+            if (!StringUtils.isBlank(hget)) {
+
+                return JsonUtils.jsonToPojo(hget, TbItemDesc.class);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         TbItemDescExample example = new TbItemDescExample();
 
@@ -61,7 +114,20 @@ public class ItemServiceImpl implements ItemService {
 
         if (itemDescs != null && itemDescs.size() > 0) {
 
-            return itemDescs.get(0);
+            TbItemDesc itemDesc = itemDescs.get(0);
+            try {
+
+                String key = ITEM_DESC + ":" + itemId;
+
+                jedisClient.set(key, JsonUtils.objectToJson(itemDesc));
+
+                jedisClient.expire(key, REDIS_EXPIRE_TIME);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return itemDesc;
 
         } else {
 
@@ -73,7 +139,16 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public TbItemParamItem getItemParamItemById(long itemId) {
+        try {
+            String hget = jedisClient.get(ITEM_PARAM_ITEM + ":" + itemId);
 
+            if (!StringUtils.isBlank(hget)) {
+
+                return JsonUtils.jsonToPojo(hget, TbItemParamItem.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         TbItemParamItemExample example = new TbItemParamItemExample();
 
         TbItemParamItemExample.Criteria criteria = example.createCriteria();
@@ -84,7 +159,20 @@ public class ItemServiceImpl implements ItemService {
 
         if (itemParamItems != null && itemParamItems.size() > 0) {
 
-            return itemParamItems.get(0);
+            TbItemParamItem tbItemParamItem = itemParamItems.get(0);
+            try {
+
+                String key = ITEM_PARAM_ITEM + ":" + itemId;
+
+                jedisClient.set(key, JsonUtils.objectToJson(tbItemParamItem));
+
+                jedisClient.expire(key, REDIS_EXPIRE_TIME);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return tbItemParamItem;
 
         } else {
 

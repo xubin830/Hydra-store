@@ -13,6 +13,7 @@
         <module>../hydra-rest</module>
         <module>../hydra-portal</module>
         <module>../hydra-search</module>
+        <module>../hydra-sso</module>
     </modules>
     <packaging>pom</packaging>
 

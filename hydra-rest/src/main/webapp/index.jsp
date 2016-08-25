@@ -11,6 +11,6 @@
     <title>测试</title>
 </head>
 <body>
-你好
+hydra-rest
 </body>
 </html>

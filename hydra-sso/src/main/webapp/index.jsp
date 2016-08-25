@@ -11,6 +11,6 @@
     <title>测试</title>
 </head>
 <body>
-hydra-search
+hydra-sso
 </body>
 </html>
