@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vip.xubin.portal.service.AdService;
+import vip.xubin.portal.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 首页Controller
@@ -18,6 +21,9 @@ public class IndexController {
     @Autowired
     private AdService adService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/index")
     public String showIndex(Model model) {
 
@@ -26,6 +32,14 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
 
+        userService.logout(request);
+
+        return "index";
+
+    }
 
 }
+

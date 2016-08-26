@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import vip.xubin.common.utils.CookieUtils;
 import vip.xubin.common.utils.HydraResult;
 import vip.xubin.common.utils.JsonUtils;
 import vip.xubin.mapper.TbUserMapper;
@@ -13,6 +14,8 @@ import vip.xubin.pojo.TbUserExample;
 import vip.xubin.sso.service.JedisClient;
 import vip.xubin.sso.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -94,7 +97,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public HydraResult userLogin(String username, String password) {
+    public HydraResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response) {
 
         TbUserExample example = new TbUserExample();
 
@@ -136,6 +139,9 @@ public class UserServiceImpl implements UserService {
                         return HydraResult.build(500, "Redis出错！");
                     }
 
+                    //设置cookie
+                    CookieUtils.setCookie(request, response, "TT_TOKEN", token);
+
                     return HydraResult.ok(token);
 
                 }  else {
@@ -175,12 +181,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public HydraResult logoutByToken(String token) {
+    public HydraResult logoutByToken(String token, HttpServletRequest request, HttpServletResponse response) {
 
         if (!StringUtils.isBlank(token)) {
 
             long del = jedisClient.del(USER_LOGIN + ":" + token);
             if (del != 0) {
+
+                //清除cookie
+                CookieUtils.deleteCookie(request,response,"TT_TOKEN");
 
                 return HydraResult.ok();
 

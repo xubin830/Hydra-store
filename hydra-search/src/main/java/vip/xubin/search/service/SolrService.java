@@ -15,6 +15,8 @@ public interface SolrService {
 
     HydraResult solrImportAll();
 
+    HydraResult solrImportByItemId(Long itemId);
+
 
     SearchResult search(String queryString, Integer page, Integer rows) throws SolrServerException;
 }

@@ -15,5 +15,7 @@ public interface SolrMapper {
 
     List<SolrItem> getSolrItemList();
 
+    List<SolrItem> getSolrItemByItemId(Long itemId);
+
 
 }

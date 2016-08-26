@@ -66,6 +66,37 @@ public class SolrServiceImpl implements SolrService {
     }
 
     @Override
+    public HydraResult solrImportByItemId(Long itemId) {
+
+        List<SolrItem> solrItems = solrMapper.getSolrItemByItemId(itemId);
+
+        try {
+
+            SolrItem item = solrItems.get(0);
+
+            SolrInputDocument fields = new SolrInputDocument();
+
+            fields.addField("id", item.getId());
+            fields.addField("item_category_name", item.getCategory_name());
+            fields.addField("item_title", item.getTitle());
+            fields.addField("item_image", item.getImage());
+            fields.addField("item_price", item.getPrice());
+            fields.addField("item_sell_point", item.getSell_point());
+            fields.addField("item_desc", item.getItem_desc());
+
+            solrServer.add(fields);
+
+            solrServer.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return HydraResult.build(500, "商品索引构建失败");
+        }
+
+        return HydraResult.ok();
+    }
+
+    @Override
     public SearchResult search(String queryString, Integer page, Integer rows) throws SolrServerException {
 
         SearchResult searchResult = new SearchResult();

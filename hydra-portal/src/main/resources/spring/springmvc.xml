@@ -13,5 +13,12 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/item/**"/>
+            <bean class="vip.xubin.portal.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
 </beans>

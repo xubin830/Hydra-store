@@ -48,11 +48,17 @@ public class ItemController {
     public String getItemDescById(@PathVariable long itemId) {
 
         TbItemDesc itemDesc = itemService.getItemDescById(itemId);
+        if (itemDesc != null) {
 
-        return itemDesc.getItemDesc();
+            String desc = itemDesc.getItemDesc();
+
+            return desc;
+        }
+
+        return null;
     }
 
-    @RequestMapping(value = "/item/param/{itemId}",produces =  MediaType.TEXT_HTML_VALUE + ";charset=utf-8")
+    @RequestMapping(value = "/item/param/{itemId}", produces = MediaType.TEXT_HTML_VALUE + ";charset=utf-8")
     @ResponseBody
     public String getItemParamById(@PathVariable long itemId) {
 

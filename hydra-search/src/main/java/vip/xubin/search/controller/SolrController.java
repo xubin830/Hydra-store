@@ -3,10 +3,7 @@ package vip.xubin.search.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import vip.xubin.common.utils.HydraResult;
 import vip.xubin.search.pojo.SearchResult;
 import vip.xubin.search.service.SolrService;
@@ -29,6 +26,14 @@ public class SolrController {
     public HydraResult importAll() {
 
         return solrService.solrImportAll();
+
+    }
+
+    @RequestMapping("/import/{itemId}")
+    @ResponseBody
+    public HydraResult importByItemId(@PathVariable Long itemId) {
+
+        return solrService.solrImportByItemId(itemId);
 
     }
 

@@ -3,6 +3,9 @@ package vip.xubin.sso.service;
 import vip.xubin.common.utils.HydraResult;
 import vip.xubin.pojo.TbUser;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 用户操作Service
  *
@@ -16,9 +19,9 @@ public interface UserService {
 
     HydraResult insertUser(TbUser user);
 
-    HydraResult userLogin(String username, String password);
+    HydraResult userLogin(String username, String password, HttpServletRequest request, HttpServletResponse response);
 
     HydraResult getUserByToken(String token);
 
-    HydraResult logoutByToken(String token);
+    HydraResult logoutByToken(String token, HttpServletRequest request, HttpServletResponse response);
 }
