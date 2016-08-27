@@ -29,6 +29,7 @@
         <module name="Hydra-manage-pojo" />
         <module name="Hydra-manage-service" />
         <module name="Hydra-manage-web" />
+        <module name="hydra-order" />
         <module name="hydra-portal" />
         <module name="hydra-rest" />
         <module name="hydra-search" />
@@ -44,6 +45,7 @@
       <module name="Hydra-manage-pojo" target="1.7" />
       <module name="Hydra-manage-service" target="1.7" />
       <module name="Hydra-manage-web" target="1.7" />
+      <module name="hydra-order" target="1.7" />
       <module name="hydra-portal" target="1.7" />
       <module name="hydra-rest" target="1.7" />
       <module name="hydra-search" target="1.7" />

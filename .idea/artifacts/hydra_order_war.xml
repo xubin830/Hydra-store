@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hydra-order:war">
+    <output-path>$PROJECT_DIR$/hydra-order/target</output-path>
+    <root id="archive" name="hydra-order.war">
+      <element id="artifact" artifact-name="hydra-order:war exploded" />
+    </root>
+  </artifact>
+</component>

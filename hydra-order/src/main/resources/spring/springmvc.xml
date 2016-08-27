@@ -7,18 +7,11 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="vip.xubin.portal.controller" />
+    <context:component-scan base-package="vip.xubin.order.controller" />
     <mvc:annotation-driven />
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
-    
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/order/**"/>
-            <bean class="vip.xubin.portal.interceptor.LoginInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
-    
+
 </beans>

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-service/Hydra-manage-service.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage-service/Hydra-manage-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hydra-manage/Hydra-manage-web/Hydra-manage-web.iml" filepath="$PROJECT_DIR$/Hydra-manage/Hydra-manage-web/Hydra-manage-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-common/hydra-common.iml" filepath="$PROJECT_DIR$/hydra-common/hydra-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hydra-order/hydra-order.iml" filepath="$PROJECT_DIR$/hydra-order/hydra-order.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-portal/hydra-portal.iml" filepath="$PROJECT_DIR$/hydra-portal/hydra-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-rest/hydra-rest.iml" filepath="$PROJECT_DIR$/hydra-rest/hydra-rest.iml" />
       <module fileurl="file://$PROJECT_DIR$/hydra-search/hydra-search.iml" filepath="$PROJECT_DIR$/hydra-search/hydra-search.iml" />
