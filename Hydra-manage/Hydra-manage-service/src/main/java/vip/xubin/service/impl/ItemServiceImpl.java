@@ -3,6 +3,7 @@ package vip.xubin.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import vip.xubin.common.pojo.EUIDataGridResult;
 import vip.xubin.common.utils.HydraResult;
@@ -33,6 +34,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private TbItemParamItemMapper itemParamItemMapper;
+
+    @Value("${SOLR_SYNC_BASE_URL}")
+    private String SOLR_SYNC_BASE_URL;
 
     @Override
     public TbItem getItemById(Long itemId) {
@@ -92,6 +96,9 @@ public class ItemServiceImpl implements ItemService {
         result = insertItemParamItem(itemId, itemParams);
 
         if (result.getStatus() != 200) throw new Exception();
+
+        //缓存同步
+        //HttpClientUtil.doPost(SOLR_SYNC_BASE_URL + itemId);
 
         return HydraResult.ok();
     }

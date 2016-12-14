@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item getItemById(long itemId) {
-
+        //http://localhost:8001/rest/item/147791199346325
         String itemString = HttpClientUtil.doGet(REST_BASE_URL + ITEM_INFO + itemId);
 
         if (!StringUtils.isBlank(itemString)) {

@@ -18,13 +18,14 @@ public class JedisTest {
 
     @Test
     public void test() {
-        Jedis jedis = new Jedis("192.168.202.121", 6379);
+        Jedis jedis = new Jedis("219.230.50.94", 6379);
 
-        jedis.set("a", "100");
-        String a = jedis.get("a");
+        jedis.set("b", "100");
+        String a = jedis.get("b");
         System.out.println(a);
 
         jedis.close();
+
 
     }
 

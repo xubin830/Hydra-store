@@ -24,7 +24,7 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @RequestMapping("/item/{itemId}")
+    @RequestMapping("/item/{itemId}")//147791199346325
     public String getItemById(@PathVariable long itemId, Model model) {
 
         Item item = itemService.getItemById(itemId);
